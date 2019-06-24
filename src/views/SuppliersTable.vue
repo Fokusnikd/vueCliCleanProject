@@ -18,7 +18,7 @@
             <td>{{supplier.username}}</td>
             <td>
               <router-link :to="'/suppliers/edit/'+supplier.id">
-                <button class="btn btn-outline-primary">Edit Supplier</button>
+                <button type="button" class="btn btn-secondary">Edit Supplier</button>
               </router-link>
             </td>
           </tr>
