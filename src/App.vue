@@ -1,10 +1,15 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link>|
+      <router-link to="/houses">houses</router-link>|
+      <router-link to="/houses/add">houseform</router-link>|
+      <router-link to="/suppliers">Sup</router-link>|
+      <router-link to="/suppliers/add">Supform</router-link>|
+      <router-link to="/suppliers/edit/:userId">Edit</router-link>|
+      <router-link to="/suppliers/:userId">SupHouses</router-link>
     </div>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
