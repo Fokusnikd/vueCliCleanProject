@@ -1,5 +1,5 @@
 <template>
-  <form @submit="handlebuttonclick($event)">
+  <form @submit="(handlebuttonclick($event), newlocalstorage())">
     <div class="form-group">
       <label for="exampleInputCity">City</label>
       <input
@@ -41,7 +41,7 @@
         placeholder="Year"
       >
     </div>
-    <select class="custom-select custom-select-lg mb-3" v-model="selected">
+    <select class="custom-select custom-select-md mb-3" v-model="selected">
       <option
         v-for="(supplier, index) in suppliersFromServer"
         v-bind:key="index"
@@ -68,10 +68,19 @@ export default {
     };
   },
   methods: {
+    newlocalstorage: function() {
+      let newLocalStorage = {
+        cityValue: this.cityValue,
+        addressValue: this.addressValue,
+        floorValue: this.floorValue,
+        yearValue: this.yearValue,
+        selected: this.selected
+      };
+      localStorage.setItem("house", JSON.stringify(newLocalStorage));
+    },
     handlebuttonclick: function(e) {
       e.preventDefault();
-
-      var newHouse = {
+      let newHouse = {
         city: this.cityValue,
         address: this.addressValue,
         supplierId: this.selected,
@@ -87,9 +96,19 @@ export default {
     }
   },
   mounted() {
+    // получение данных из сервера
     axios
       .get(`${this.apiBaseUrl}/suppliers`)
       .then(response => (this.suppliersFromServer = response.data.suppliers));
+    // запись из локалстора
+    if (localStorage.house) {
+      let LocalHouse = JSON.parse(localStorage.getItem("house"));
+      this.cityValue = LocalHouse.cityValue;
+      this.addressValue = LocalHouse.addressValue;
+      this.floorValue = LocalHouse.floorValue;
+      this.selected = LocalHouse.selected;
+      this.yearValue = LocalHouse.yearValue;
+    }
   },
   components: {}
 };

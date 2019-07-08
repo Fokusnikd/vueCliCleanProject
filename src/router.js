@@ -7,6 +7,7 @@ import SuppliersEdit from "./views/SuppliersEdit";
 import SuppliersHouses from "./views/SuppliersHouses";
 import HouseTable from "./views/HouseTable";
 import HousesForm from "./views/HousesForm";
+import RegistrationUserForm from "./views/RegistrationUserForm";
 
 Vue.use(Router);
 
@@ -49,6 +50,11 @@ export default new Router({
       path: "/suppliers",
       name: "suppliersTable",
       component: SuppliersTable
+    },
+    {
+      path: "/registrationUserForm",
+      name: "registrationUserForm",
+      component: RegistrationUserForm
     },
   ]
 });

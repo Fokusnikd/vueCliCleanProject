@@ -1,36 +1,130 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/houses">houses</router-link>|
-      <router-link to="/houses/add">houseform</router-link>|
-      <router-link to="/suppliers">Sup</router-link>|
-      <router-link to="/suppliers/add">Supform</router-link>|
-      <router-link to="/suppliers/edit/:userId">Edit</router-link>|
-      <router-link to="/suppliers/:userId">SupHouses</router-link>
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <router-link to="/">
+            <button
+              class="list-group-item list-group-item-action"
+              @click="whoTheActive(1)"
+              :class="{'active': theActive == 1}"
+              id="list-home-list"
+              data-toggle="list"
+              href="#list-home"
+              role="tab"
+              aria-controls="home"
+            >Home</button>
+          </router-link>
+          <router-link to="/registrationUserForm">
+            <button
+              class="list-group-item list-group-item-action"
+              @click="whoTheActive(2)"
+              :class="{'active': theActive == 2}"
+              id="list-home-list"
+              data-toggle="list"
+              href="#list-home"
+              role="tab"
+              aria-controls="home"
+            >Home</button>
+          </router-link>
+          <router-link to="/houses">
+            <button
+              class="list-group-item list-group-item-action"
+              @click="whoTheActive(3)"
+              :class="{'active': theActive == 3}"
+              id="list-home-list"
+              data-toggle="list"
+              role="tab"
+              aria-controls="home"
+            >Home</button>
+          </router-link>
+          <router-link to="/houses/add">
+            <button
+              class="list-group-item list-group-item-action"
+              @click="whoTheActive(4)"
+              :class="{'active': theActive == 4}"
+              id="list-home-list"
+              data-toggle="list"
+              role="tab"
+              aria-controls="home"
+            >Home</button>
+          </router-link>
+          <router-link to="/suppliers">
+            <button
+              class="list-group-item list-group-item-action"
+              @click="whoTheActive(5)"
+              :class="{'active': theActive == 5}"
+              id="list-home-list"
+              data-toggle="list"
+              role="tab"
+              aria-controls="home"
+            >Home</button>
+          </router-link>
+          <router-link to="/suppliers/add">
+            <button
+              class="list-group-item list-group-item-action"
+              @click="whoTheActive(6)"
+              :class="{'active': theActive == 6}"
+              id="list-home-list"
+              data-toggle="list"
+              role="tab"
+              aria-controls="home"
+            >Home</button>
+          </router-link>
+          <router-link to="/suppliers/edit/:userId">
+            <button
+              class="list-group-item list-group-item-action"
+              @click="whoTheActive(7)"
+              :class="{'active': theActive == 7}"
+              id="list-home-list"
+              data-toggle="list"
+              role="tab"
+              aria-controls="home"
+            >Home</button>
+          </router-link>
+          <router-link to="/suppliers/:userId">
+            <button
+              class="list-group-item list-group-item-action"
+              @click="whoTheActive(8)"
+              :class="{'active': theActive == 8}"
+              id="list-home-list"
+              data-toggle="list"
+              role="tab"
+              aria-controls="home"
+            >Home</button>
+          </router-link>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="list-home"
+            role="tabpanel"
+            aria-labelledby="list-home-list"
+          >
+            <router-view></router-view>
+          </div>
+        </div>
+      </div>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+export default {
+  name: "app",
+  data: () => {
+    return {
+      theActive: ""
+    };
+  },
+  methods: {
+    whoTheActive: function(num) {
+      this.theActive = num;
+      return this.theActive;
+    }
+  }
+};
+</script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
